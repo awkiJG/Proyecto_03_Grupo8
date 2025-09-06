@@ -21,17 +21,16 @@ export function encontrarX() {
     let posX
     let Xencon = 0
     let cadenas = [cad1, cad2, cad3]
-
+    let cadenasCopia = [...cadenas]
     for(let i=0; i<cadenas.length; i++){
         if(cadenas[i].includes('x')){
             cadConX = i
             for(let j=0; j<cadenas[i].length; j++){
                 if(cadenas[i][j] === 'x'){
                     posX = j
-                    ++Xencon
+                    Xencon++
                 }
             }
-
         }
     }
 
@@ -59,11 +58,19 @@ export function encontrarX() {
             break
     }
 
+    for(let i=0; i<cadenas[cadConX].length; i++){
+        if(i == posX){
+        }else if(cadenas[cadConX][i] !== cadenasCopia[cadConX][i]){
+            alert("Los valores de la suma que ingresaste no son correctos")
+            location.reload()    
+        }
+    }
+
     if(cadConX == null || posX == null){
         document.getElementById('resultado-x').textContent = "No se encontro ninguna X"
-        document.getElementById('ecuacion').textContent = "Ecuacion: " + sum1+" + "+sum2+" = "+resu
     }else{
         document.getElementById('resultado-x').textContent = "Valor de X: " +cadenas[cadConX][posX]
-        document.getElementById('ecuacion').textContent = "Ecuacion: " + sum1+" + "+sum2+" = "+resu
     }
+
+    document.getElementById('ecuacion').textContent = "Ecuacion: " + sum1+" + "+sum2+" = "+resu
 }
