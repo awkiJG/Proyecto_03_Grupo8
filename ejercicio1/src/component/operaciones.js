@@ -1,3 +1,6 @@
+let resulX = document.getElementById('resultado-x')
+let ecuacion = document.getElementById('ecuacion')
+
 export function encontrarX() {
 
     let imput1 = prompt("introduzca el primer sumando, debe haber una sola 'x' en toda la operación", "")
@@ -48,9 +51,10 @@ export function encontrarX() {
     }
 
     if(cadConX == null || posX == null){
-        console.log("no se encontró ninguna 'x'")
+        resulX.textContent = "No se encontro ninguna X"
+        ecuacion.textContent = "Ecuacion: " + sum1+" + "+sum2+" = "+resu
     }else{
-        console.log("el valor de 'x' es:",cadenas[cadConX][posX])
-        console.log("la suma completa quedaría así: "+sum1+" + "+sum2+" = "+resu)
+        resulX.textContent = "Valor de X: " +cadenas[cadConX][posX]
+        ecuacion.textContent = "Ecuacion: " + sum1+" + "+sum2+" = "+resu
     }
 }
