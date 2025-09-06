@@ -19,13 +19,25 @@ export function encontrarX() {
    
     let cadConX
     let posX
+    let Xencon = 0
     let cadenas = [cad1, cad2, cad3]
 
     for(let i=0; i<cadenas.length; i++){
         if(cadenas[i].includes('x')){
             cadConX = i
-            posX = cadenas[i].indexOf('x')
+            for(let j=0; j<cadenas[i].length; j++){
+                if(cadenas[i][j] === 'x'){
+                    posX = j
+                    ++Xencon
+                }
+            }
+
         }
+    }
+
+    if(Xencon > 1){
+        alert("solo puedes ingresar números que conformen una operación válida de suma y una 'x'")
+        location.reload() 
     }
 
     let sum1 = cadConX !== 0 ? parseInt(cad1.join('')) : null
