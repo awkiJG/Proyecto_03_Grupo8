@@ -1,22 +1,26 @@
 export function encontrarX() {
 
-    let imput1 = prompt("introduzca el primer sumando, debe haber una sola 'x' en toda la operación", "")
-    let imput2 = prompt("Introduzca el segundo sumando, debe haber una sola 'x' en toda la operación", "")
-    let imput3 = prompt("Introduzca el resultado de la suma, debe haber una sola 'x' en toda la operación", "")
-   
-    let valid1 = /^[0-9x]+$/.test(imput1);
-    let valid2 = /^[0-9x]+$/.test(imput2);
-    let valid3 = /^[0-9x]+$/.test(imput3);
+    let imput1 = prompt("Introduzca el primer sumando, debe haber una sola 'x' en toda la operación", )
+    let imput2 = prompt("Introduzca el segundo sumando, debe haber una sola 'x' en toda la operación", )
+    let imput3 = prompt("Introduzca el resultado de la suma, debe haber una sola 'x' en toda la operación", )
 
-    if(!valid1 || !valid2 || !valid3){
-        alert("solo puedes ingresar números que conformen una operación válida de suma y una 'x'")
+    if(!imput1 || !imput2 || !imput3){
+        alert("Deves ingresar números que conformen una operación válida de suma y una 'x'")
         location.reload()
+        return  
     }
-   
-    let cad1 = imput1.split('')
+
+    let valid = /^[0-9x]+$/.test(imput1 + imput2 + imput3);
+    if(!valid){
+        alert("Deves ingresar números que conformen una operación válida de suma y una 'x'")
+        location.reload()
+        return
+    }
+
+    let cad1 = imput1.split('') 
     let cad2 = imput2.split('')
     let cad3 = imput3.split('')
-   
+    
     let cadConX
     let posX
     let Xencon = 0
@@ -35,8 +39,9 @@ export function encontrarX() {
     }
 
     if(Xencon > 1){
-        alert("solo puedes ingresar números que conformen una operación válida de suma y una 'x'")
-        location.reload() 
+        alert("Solo puedes ingresar números que conformen una operación válida de suma y una sola 'x'")
+        location.reload()
+        return
     }
 
     let sum1 = cadConX !== 0 ? parseInt(cad1.join('')) : null
@@ -58,11 +63,11 @@ export function encontrarX() {
             break
     }
 
-    for(let i=0; i<cadenas[cadConX].length; i++){
-        if(i == posX){
-        }else if(cadenas[cadConX][i] !== cadenasCopia[cadConX][i]){
+    for(let i=0; i<cadenasCopia[cadConX].length; i++){
+        if(cadenas[cadConX][i] !== cadenasCopia[cadConX][i] && i !== posX || cadenas[cadConX].length !== cadenasCopia[cadConX].length){
             alert("Los valores de la suma que ingresaste no son correctos")
-            location.reload()    
+            location.reload() 
+            return   
         }
     }
 
