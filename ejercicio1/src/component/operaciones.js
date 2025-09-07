@@ -8,7 +8,7 @@ export function encontrarX() {
 
     // Verifica si alguno de los inputs está vacío (""), es null (cancelado) o undefined, y muestra una alerta si es así
     if (!imput1 || !imput2 || !imput3) {
-        alert("Deves ingresar números que conformen una operación válida de suma y una 'x'");
+        alert("Debes ingresar solo números que conformen una operación válida de suma y una sola 'x'");
         location.reload(); // Recarga la página para reiniciar
         return; // Sale de la función
     }
@@ -16,24 +16,20 @@ export function encontrarX() {
     // Combina los tres inputs en una sola cadena y verifica con una expresión regular si solo contiene dígitos (0-9) o una 'x'
     let valid = /^[0-9x]+$/.test(imput1 + imput2 + imput3);
     if (!valid) {
-        alert("Deves ingresar números que conformen una operación válida de suma y una 'x'");
+        alert("Debes ingresar solo números que conformen una operación válida de suma y una sola 'x'");
         location.reload(); // Recarga la página para reiniciar
         return; // Sale de la función
     }
-
-    // Divide cada input en un array de caracteres individuales
-    let cad1 = imput1.split(''); 
-    let cad2 = imput2.split('');
-    let cad3 = imput3.split('');
     
     // Declara variables para almacenar la posición de la cadena con 'x', la posición de 'x' dentro de esa cadena, y un contador de 'x'
     let cadConX;
     let posX;
     let Xencon = 0;
     // Crea un array que contiene los arrays de caracteres de los tres inputs
-    let cadenas = [cad1, cad2, cad3];
+    let cadenas = [imput1.split(''), imput2.split(''), imput3.split('')];
     // Crea una copia superficial de las cadenas para comparaciones posteriores
     let cadenasCopia = [...cadenas];
+    
     for (let i = 0; i < cadenas.length; i++) {
         // Busca si la cadena actual contiene 'x'
         if (cadenas[i].includes('x')) {
@@ -49,16 +45,16 @@ export function encontrarX() {
     }
 
     // Verifica si hay más de una 'x' en toda la operación y muestra una alerta si es así
-    if (Xencon > 1) {
-        alert("Solo puedes ingresar números que conformen una operación válida de suma y una sola 'x'");
+    if (Xencon !== 1) {
+        alert("Debes ingresar solo números que conformen una operación válida de suma y una sola 'x'");
         location.reload(); // Recarga la página para reiniciar
         return; // Sale de la función
     }
 
     // Asigna los valores numéricos de las cadenas, usando null si la cadena contiene 'x'
-    let sum1 = cadConX !== 0 ? parseInt(cad1.join('')) : null;
-    let sum2 = cadConX !== 1 ? parseInt(cad2.join('')) : null;
-    let resu = cadConX !== 2 ? parseInt(cad3.join('')) : null;
+    let sum1 = cadConX !== 0 ? parseInt(cadenas[0].join('')) : null;
+    let sum2 = cadConX !== 1 ? parseInt(cadenas[1].join('')) : null;
+    let resu = cadConX !== 2 ? parseInt(cadenas[2].join('')) : null;
 
     // Según la posición de 'x', calcula el valor de la cadena con 'x' y actualiza el array correspondiente
     switch (cadConX) {
@@ -84,15 +80,10 @@ export function encontrarX() {
             return; // Sale de la función
         }
     }
+    
+    // Muestra el valor de 'x' en la posición calculada
+    document.getElementById('resultado-x').textContent = "Valor de X: " + cadenas[cadConX][posX];
 
-    // Muestra un mensaje si no se encontró 'x' o su posición
-    if (cadConX == null || posX == null) {
-        document.getElementById('resultado-x').textContent = "No se encontro ninguna X";
-    } else {
-        // Muestra el valor de 'x' en la posición calculada
-        document.getElementById('resultado-x').textContent = "Valor de X: " + cadenas[cadConX][posX];
-    }
-
-    // Actualiza el elemento HTML con la ecuación completa usando los valores calculados
+    // Muestra la ecuación completa usando los valores calculados
     document.getElementById('ecuacion').textContent = "Ecuacion: " + sum1 + " + " + sum2 + " = " + resu;
 }
