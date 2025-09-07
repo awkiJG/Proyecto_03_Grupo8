@@ -1,53 +1,53 @@
 body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f2f5; /* Fondo claro y suave */
-    font-family: 'Arial', sans-serif;
+    margin: 0; /* Elimina los márgenes predeterminados del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+    display: flex; /* Usa un diseño flexible para centrar contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    min-height: 100vh; /* Establece una altura mínima igual al 100% de la ventana */
+    background-color: #f0f2f5; /* Establece un color de fondo claro y suave */
+    font-family: 'Arial', sans-serif; /* Define la fuente principal como Arial con fallback a sans-serif */
 }
 
 .cartel {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    text-align: center;
-    width: 80%;
-    max-width: 400px;
-    transition: transform 0.3s ease; /* Animación al interactuar */
+    background-color: #ffffff; /* Fondo blanco para el cartel */
+    padding: 2rem; /* Añade relleno interno de 2rem por todos los lados */
+    border-radius: 15px; /* Redondea las esquinas del cartel */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra suave para un efecto de elevación */
+    text-align: center; /* Centra el texto dentro del cartel */
+    width: 80%; /* Establece un ancho del 80% del contenedor padre */
+    max-width: 400px; /* Limita el ancho máximo a 400px */
+    transition: transform 0.3s ease; /* Añade una transición suave al transformar el elemento */
 }
 
 .cartel:hover {
-    transform: scale(1.02); /* Efecto de aumento al pasar el mouse */
+    transform: scale(1.02); /* Aumenta ligeramente el tamaño del cartel al pasar el mouse (efecto hover) */
 }
 
 h1 {
-    color: #2c3e50;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    color: #2c3e50; /* Define un color oscuro para los encabezados */
+    font-size: 2rem; /* Establece el tamaño de fuente a 2rem */
+    margin-bottom: 1.5rem; /* Añade un margen inferior de 1.5rem */
 }
 
 .resultado {
-    background-color: #ecf0f1;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    color: #34495e;
+    background-color: #ecf0f1; /* Fondo claro para las secciones de resultados */
+    padding: 1rem; /* Añade relleno interno de 1rem */
+    margin: 0.5rem 0; /* Añade un margen vertical de 0.5rem */
+    border-radius: 10px; /* Redondea las esquinas de los resultados */
+    font-size: 1.2rem; /* Establece el tamaño de fuente a 1.2rem */
+    color: #34495e; /* Define un color de texto oscuro para los resultados */
 }
 
 #resultado-x {
-    border-left: 5px solid #e74c3c; /* Borde rojo para destacar 'x' */
+    border-left: 5px solid #e74c3c; /* Añade un borde izquierdo rojo de 5px para destacar el resultado de 'x' */
 }
 
 #ecuacion {
-    border-left: 5px solid #3498db; /* Borde azul para la ecuación */
+    border-left: 5px solid #3498db; /* Añade un borde izquierdo azul de 5px para destacar la ecuación */
 }
 
 span {
-    font-weight: bold;
-    color: #c0392b; /* Color destacado para los valores */
+    font-weight: bold; /* Hace que el texto dentro de <span> sea negrita */
+    color: #c0392b; /* Define un color rojo oscuro para resaltar los valores dentro de <span> */
 }
