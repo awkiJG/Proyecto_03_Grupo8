@@ -1,89 +1,95 @@
-export function encontrarX() {
-    // Solicita al usuario el primer sumando a través de un prompt, con un mensaje que indica que debe contener una sola 'x'
-    let imput1 = prompt("Introduzca el primer sumando, debe haber una sola 'x' en toda la operación", );
-    // Solicita al usuario el segundo sumando a través de un prompt, con el mismo mensaje sobre la 'x'
-    let imput2 = prompt("Introduzca el segundo sumando, debe haber una sola 'x' en toda la operación", );
-    // Solicita al usuario el resultado de la suma a través de un prompt, con el mismo mensaje sobre la 'x'
-    let imput3 = prompt("Introduzca el resultado de la suma, debe haber una sola 'x' en toda la operación", );
+// Función que obtiene los valores de los inputs y los convierte en arrays de caracteres.
+export function datos(){
+    // Obtiene el valor de los 3 input como una cadena.
+    let input1 = document.getElementById("sumando1").value
+    let input2 = document.getElementById("sumando2").value
+    let input3= document.getElementById("resultado").value
 
-    // Verifica si alguno de los inputs está vacío (""), es null (cancelado) o undefined, y muestra una alerta si es así
-    if (!imput1 || !imput2 || !imput3) {
-        alert("Debes ingresar solo números que conformen una operación válida de suma y una sola 'x'");
-        location.reload(); // Recarga la página para reiniciar
-        return; // Sale de la función
-    }
+    // Crea un array con los valores divididos en caracteres individuales.
+    let cadenas = [input1.split(''), input2.split(''), input3.split('')]
+    return cadenas
+}
 
-    // Combina los tres inputs en una sola cadena y verifica con una expresión regular si solo contiene dígitos (0-9) o una 'x'
-    let valid = /^[0-9x]+$/.test(imput1 + imput2 + imput3);
-    if (!valid) {
-        alert("Debes ingresar solo números que conformen una operación válida de suma y una sola 'x'");
-        location.reload(); // Recarga la página para reiniciar
-        return; // Sale de la función
-    }
+// Función que encuentra la posición y el índice de 'x' en las cadenas proporcionadas.
+export function encontrarX(cadenas){
+    // Variable para almacenar los indices de la posicion respectiva de 'x'.
+    let cadConX
+    let posX
+    let contX = 0
+
+    // Objeto que almacenará los datos relacionados con la posición de 'x'.
+    let datosX = {cadConX, posX, contX}
     
-    // Declara variables para almacenar la posición de la cadena con 'x', la posición de 'x' dentro de esa cadena, y un contador de 'x'
-    let cadConX;
-    let posX;
-    let Xencon = 0;
-    // Crea un array que contiene los arrays de caracteres de los tres inputs
-    let cadenas = [imput1.split(''), imput2.split(''), imput3.split('')];
-    // Crea una copia superficial de las cadenas para comparaciones posteriores
-    let cadenasCopia = [...cadenas];
-    
+    // Itera sobre cada cadena en el array para buscar 'x'.
     for (let i = 0; i < cadenas.length; i++) {
-        // Busca si la cadena actual contiene 'x'
+        // Verifica si la cadena actual contiene 'x'.
         if (cadenas[i].includes('x')) {
-            cadConX = i; // Guarda el índice de la cadena que contiene 'x'
+            datosX.cadConX = i; 
+            // Itera sobre cada carácter de la cadena que contiene 'x'.
             for (let j = 0; j < cadenas[i].length; j++) {
-                // Busca la posición exacta de 'x' dentro de la cadena
+                // Verifica si el carácter actual es 'x'.
                 if (cadenas[i][j] === 'x') {
-                    posX = j; // Guarda la posición de 'x'
-                    Xencon++; // Incrementa el contador de 'x'
+                    datosX.posX = j; 
+                    datosX.contX++
                 }
             }
         }
     }
+    return datosX
+}
 
-    // Verifica si hay más de una 'x' en toda la operación y muestra una alerta si es así
-    if (Xencon !== 1) {
-        alert("Debes ingresar solo números que conformen una operación válida de suma y una sola 'x'");
-        location.reload(); // Recarga la página para reiniciar
-        return; // Sale de la función
-    }
+// Función que calcula el valor de 'x' y actualiza las cadenas con los resultados.
+export function calcularEcuacion(cadenas, datosX){
+    // Crea una copia de las cadenas para no modificar las originales.
+    let cadenasCopia = [...cadenas]
+    // Calcula los sumandos y resultado si no contiene 'x', de lo contrario null.
+    let sum1 = datosX.cadConX !== 0 ? parseInt(cadenasCopia[0].join('')) : null
+    let sum2 = datosX.cadConX !== 1 ? parseInt(cadenasCopia[1].join('')) : null
+    let resu = datosX.cadConX !== 2 ? parseInt(cadenasCopia[2].join('')) : null
 
-    // Asigna los valores numéricos de las cadenas, usando null si la cadena contiene 'x'
-    let sum1 = cadConX !== 0 ? parseInt(cadenas[0].join('')) : null;
-    let sum2 = cadConX !== 1 ? parseInt(cadenas[1].join('')) : null;
-    let resu = cadConX !== 2 ? parseInt(cadenas[2].join('')) : null;
-
-    // Según la posición de 'x', calcula el valor de la cadena con 'x' y actualiza el array correspondiente
-    switch (cadConX) {
+    // Determina qué valor calcular según la posición de 'x'.
+    switch (datosX.cadConX) {
         case 0:
-            sum1 = resu - sum2; // Calcula el valor de sum1 restando sum2 de resu
-            cadenas[0] = sum1.toString().split(''); // Convierte el resultado a array de caracteres
-            break;
+            sum1 = resu - sum2
+            cadenasCopia[0] = sum1.toString().split('')
+            break
         case 1:
-            sum2 = resu - sum1; // Calcula el valor de sum2 restando sum1 de resu
-            cadenas[1] = sum2.toString().split(''); // Convierte el resultado a array de caracteres
-            break;
+            sum2 = resu - sum1
+            cadenasCopia[1] = sum2.toString().split('')
+            break
         case 2:
-            resu = sum1 + sum2; // Calcula el valor de resu sumando sum1 y sum2
-            cadenas[2] = resu.toString().split(''); // Convierte el resultado a array de caracteres
-            break;
+            resu = sum1 + sum2
+            cadenasCopia[2] = resu.toString().split('')
+            break
     }
 
-    // Compara los arrays modificados con las copias originales para validar la congruencia
-    for (let i = 0; i < cadenasCopia[cadConX].length; i++) {
-        if (cadenas[cadConX][i] !== cadenasCopia[cadConX][i] && i !== posX || cadenas[cadConX].length !== cadenasCopia[cadConX].length) {
-            alert("Los valores de la suma que ingresaste no son correctos"); // Muestra alerta si los valores o longitudes no coinciden
-            location.reload(); // Recarga la página para reiniciar
-            return; // Sale de la función
+    return cadenasCopia
+}
+
+// Función que valida las cadenas originales contra las resueltas y devuelve un código de estado.
+export function validar(cadOriginal, cadResuelta, datosX){
+    // Verifica si alguna de las cadenas originales está vacía.
+    if (cadOriginal[0].length === 0 || cadOriginal[1].length === 0 || cadOriginal[2].length === 0) {
+    return 1 
+    }
+
+    // Combina las cadenas y valida que solo contengan dígitos o 'x'.
+    let valid = /^[0-9x]+$/.test(cadOriginal[0].join('') + cadOriginal[1].join('') + cadOriginal[2].join(''))
+    if (!valid) {
+        return 2
+    }
+
+    // Verifica que haya exactamente una 'x' en las cadenas.
+    if (datosX.contX !== 1) {
+        return 3
+    }
+
+    // Itera sobre los caracteres de la cadena que contiene 'x' para validar congruencia.
+    for (let i = 0; i < cadOriginal[datosX.cadConX].length; i++) {
+        if (cadResuelta[datosX.cadConX][i] !== cadOriginal[datosX.cadConX][i] && i !== datosX.posX || cadOriginal[datosX.cadConX].length !== cadResuelta[datosX.cadConX].length) {
+            return 4
         }
     }
-    
-    // Muestra el valor de 'x' en la posición calculada
-    document.getElementById('resultado-x').textContent = "Valor de X: " + cadenas[cadConX][posX];
 
-    // Muestra la ecuación completa usando los valores calculados
-    document.getElementById('ecuacion').textContent = "Ecuacion: " + sum1 + " + " + sum2 + " = " + resu;
+    return 5
 }
