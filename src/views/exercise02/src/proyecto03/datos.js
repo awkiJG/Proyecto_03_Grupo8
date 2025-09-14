@@ -1,6 +1,5 @@
 
 export const mascotas = []; 
-let id = 1;
 export function getNuevoId() {
     return id++;
 }
