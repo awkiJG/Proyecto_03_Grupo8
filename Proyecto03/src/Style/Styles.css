@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f8e8ff, #e8f4ff, #fff0e8);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border: 3px solid black;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+form, #resumen, #listaMascotas {
+    background: white;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input, select, button {
+    padding: 8px;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
+input, select {
+    width: 100%;
+}
+
+button {
+    background: #d4e6f1;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #aed6f1;
+}
