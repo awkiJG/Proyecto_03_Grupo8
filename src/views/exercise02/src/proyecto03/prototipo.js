@@ -1,5 +1,5 @@
  
-//export function guardarInfo(){
+/* //export function guardarInfo(){
 
 
 
@@ -159,4 +159,4 @@ function renderizarMascotas() {
 
 })
 
-//} 
+//}  */
