@@ -3,60 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Mascotas</title>
-    <link rel="stylesheet" href="../src/Style/Styles.css">
+    <title>Grupo 8</title>
+    <link rel="icon" href="/src/images/logo2.webp" type="image/webp">
+    <link rel="stylesheet" type="text/css" href="/src/css/main.css">
+    <script defer src="/src/js/main.js"></script>
 </head>
 <body>
+    <header class="header-content">
+        <a href="/public/index.html" class="logo-link">
+            <img src="/src/images/logo2.webp" alt="Logo del Grupo 8" class="header-logo">
+        </a>
+        <nav class="header-nav">  
+                <a href="/src/views/aboutus.html" class="link-page">Nosotros</a>
+        </nav>
+    </header>
 
-    <div class="container">
-    
-        <h1>Registro de Mascotas</h1>
-        <h2>Registra las mascotas de tus clientes y lleva un control de vacunacion</h2>
-    
-
-        <form id="informacionMascota">
-            
-            <label for="nombreMascota">Nombre de la mascota:</label>
-            <input type="text" id="nombreMascota" required>
-
-            <label>Tipo de Mascota<select id="tipoMascota">
-                <option value="Perro">Perro</option>
-                <option value="Gato">Gato</option>
-                <option value="Conejo">Conejo</option>
-                <option value="Pajaro">Pajaro</option>
-                <option value="Otro">Otro</option>
-            </select></label>
-
-            <label for="edad">Edad</label>
-            <input type="text" id="edad" required>
-
-            <label for="nombreDuenio">Nombre del dueño</label>
-            <input type="text" id="nombreDuenio" required>
-
-            <label for="vacuna">Esta vacunada?</label>
-            <label>Si<input type="radio" id="vacunaSi" name="vacuna" value="si" required></label>
-            <label>No<input type="radio" id="vacunaNo" name="vacuna" value="no" required></label>
-            <!--id = "vacuna" esta mal porque tendria que ser name="" para que compartan el mismo grupo-->
-
-            <button type="button" id="guardarB">Guardar datos</button>
-
-        </form>
-
-        <div id="resumen">
-            <p>Total de mascotas: <span id="totalMascotas">0</span></p>
-            <p>Mascotas vacunadas: <span id="totalVacunadas">0</span></p>
-            <p>Mascotas no vacunadas: <span id="totalNoVacunadas">0</span></p> 
-            <!--span contenedor de lineas pequeño-->
-        </div>
-
-        <div id="listaMascotas">Lista Mascotas</div>
-
-    </section>
-       
-
-
-    </div>
-    
-    <script type="module" src="../src/proyecto03/index.js"></script>
+    <main>
+        <section class="main-section">
+            <h1 class="main-title">Bienvenidos al Proyecto 3 del Grupo 8</h1>
+            <h2 class="main-subtitle">Nuestros Ejercicios</h2>
+            <div class="exercise-buttons">
+                <a href="/src/views/calculadora.html" class="btn-link">Detector de X</a>
+                <a href="/src/views/veterinaria.html" class="btn-link">Veterinaria</a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
