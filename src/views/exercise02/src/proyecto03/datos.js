@@ -1,6 +1,6 @@
 
 export const mascotas = [];
-let id = 1; 
+let id = 1;   //getNuevoId no recibia ningun dato faltaba declarar id
 export function getNuevoId() {
     return id++;
 }
