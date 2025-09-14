@@ -26,28 +26,53 @@ export function crearDivM() {  // crea la lista
 
 export function renderizarMascotas() {
     const listaMascotas = document.getElementById("listaMascotas");
-    listaMascotas.innerHTML = "<h3>Listado de Mascotas</h3>"; //se agrega un encabezado nuevo con los datos ingresados de div
+    listaMascotas.innerHTML = "<h3>Listado de Mascotas</h3>";
 
-    mascotas.forEach(mascota => { //forEach es la version simple del for que recorre arrays
-        const contenedor = document.createElement("div");
-        const info = document.createElement("p"); //crea un parrafo
-        info.textContent =   //y aqui coloca los datos
-        `Nombre: ${mascota.nombre}, 
-        Tipo: ${mascota.tipo}, 
-        Edad: ${mascota.edad}, 
-        Dueño: ${mascota.duenio}, 
-        Estado: ${mascota.vacunada ? "Vacunada" : "No vacunada"}`;
-        //si es true vacunada sino es false no vacunada
+    const gridContainer = document.createElement("div");
+    gridContainer.className = "mascotas-grid";
 
-        // boton para borrar esta mascota usando su ID
+    mascotas.forEach(mascota => {
+        const card = document.createElement("div");
+        card.className = "mascota-card";
+
+        // Determinar la imagen según el tipo de mascota
+        let imagenSrc = "../src/images/";
+        switch(mascota.tipo.toLowerCase()) {
+            case 'perro':
+                imagenSrc += "perro.png";
+                break;
+            case 'gato':
+                imagenSrc += "gato.png";
+                break;
+            case 'conejo':
+                imagenSrc += "conejo.png";
+                break;
+            case 'pajaro':
+                imagenSrc += "pajaro.png";
+                break;
+            default:
+                imagenSrc += "otro.png";
+        }
+
+        card.innerHTML = `
+            <img src="${imagenSrc}" alt="${mascota.tipo}" class="mascota-image">
+            <div class="mascota-info">
+                <strong>${mascota.nombre}</strong><br>
+                ${mascota.tipo} - ${mascota.edad} años<br>
+                Dueño: ${mascota.duenio}<br>
+                ${mascota.vacunada ? "Vacunada" : "No vacunada"}
+            </div>
+        `;
+
+        // Agregar botón de eliminar
         const botonEliminar = document.createElement("button");
         botonEliminar.textContent = "Eliminar";
+        botonEliminar.className = "mascota-eliminar";
         botonEliminar.addEventListener("click", () => eliminarMascota(mascota.id));
+        card.appendChild(botonEliminar);
 
-        contenedor.appendChild(info);
-        contenedor.appendChild(botonEliminar);
-        listaMascotas.appendChild(contenedor);
-        //listaMascotas es el padre y se le agrega un hijo info  
-        //que muestra los datos
+        gridContainer.appendChild(card);
     });
+
+    listaMascotas.appendChild(gridContainer);
 }
