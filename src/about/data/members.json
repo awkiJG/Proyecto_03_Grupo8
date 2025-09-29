@@ -1,32 +1,32 @@
 [
     {
-        "image": "../images/member.webp",
+        "image": "../src/about/images/member.webp",
         "order": 2,
         "name": "Gabriel Roberto Anze",
         "contact": "@GabrielAnze"
     },
     {
-        "image": "../images/member.webp",
+        "image": "../src/about/images/member.webp",
         "order": 7,
         "name": "Alex Gabriel Calatayud",
-        "contact": "@AlexCalatayud"
+        "contact": "@alexCalatayud-troit"
     },
     {
-       "image": "../images/member.webp",
+       "image": "../src/about/images/awki.png",
         "order": 20,
         "name": "Awki Gimenez",
-        "contact": "@AwkiGimenez"
+        "contact": "@awkiJG"
     },
     {
-        "image": "../images/25user.jfif",
+        "image": "../src/about/images/25user.jfif",
         "order": 25,
         "name": "Nayla Aixa Leiva",
         "contact": "@LeivAixaNayla"
     },
     {
-        "image": "../images/member.webp",
+        "image": "../src/about/images/member.webp",
         "order": 34,
         "name": "Ezequiel Andres Sanchez Roldan",
-        "contact": "@EzequielSanchez"
+        "contact": "@Andromeda402"
     }
 ]

@@ -11,7 +11,7 @@ export function crearInputBusqueda() {
     busquedaDiv.id = 'busqueda';
     busquedaDiv.innerHTML = `
         <h3>Buscar Mascota por Nombre</h3>
-        <input type="text" id="buscarNombre" placeholder="Escribir nombre de la mascota...">
+        <input type="text" id="buscarNombre" placeholder="Nombre de la mascota">
         <button type="button" id="buscarBtn">Buscar</button>
         <button type="button" id="mostrarTodas">Mostrar todas</button>
     `;

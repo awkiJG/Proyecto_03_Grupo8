@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // Ruta al archivo JSON, lo cargamos usando fetch
-    fetch('../data/members.json')
+    fetch("../src/about/data/members.json")
         // Procesa la respuesta
         .then(response => {
 

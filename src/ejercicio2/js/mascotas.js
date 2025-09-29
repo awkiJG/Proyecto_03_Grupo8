@@ -36,7 +36,7 @@ export function renderizarMascotas() {
         card.className = "mascota-card";
 
         // Determinar la imagen según el tipo de mascota
-        let imagenSrc = "../src/images/";
+        let imagenSrc = "../imagenes/";
         switch(mascota.tipo.toLowerCase()) {
             case 'perro':
                 imagenSrc += "perro.png";
